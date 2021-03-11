@@ -2,15 +2,28 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json())
+
+/*
+Route Params = parametros na URL ex.: /1
+Query Params = parametros na URL separado por & ex.: /id=1&nome="Alan"
+*/
+
 app.get('/courses', (request, response) => {
+    const query = resquest.query;
+    console.log(query);
     return response.json(["Curso1","Curso2","Curso3"]);
 });
 
 app.post('/courses', (request, response) => {
+    const body = request.body;
+    console.log(body);
     return response.json(["Curso1","Curso2","Curso3","Curso4"]);
 });
 
 app.put('/courses/:id', (request, response) => {
+    const params = request.params;
+    console.log(params);
     return response.json(["Curso6","Curso2","Curso3","Curso4"]);
 });
 
